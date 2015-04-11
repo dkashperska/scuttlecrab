@@ -1,17 +1,20 @@
 package org.kashpersky.scuttle;
 
+import org.hibernate.SessionFactory;
+import org.kashpersky.scuttle.config.ScuttleCrabConfig;
+import org.kashpersky.scuttle.config.data.HibernateConfiguration;
+import org.kashpersky.scuttle.config.data.MongoConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class ScuttleCrabApp implements CommandLineRunner{
+public class ScuttleCrabApp {
 
    public static void main(String... args) {
-       SpringApplication.run(ScuttleCrabApp.class, args);
+       AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(ScuttleCrabConfig.class,
+               MongoConfiguration.class, HibernateConfiguration.class);
+       // insert code here :D
    }
 
-    @Override
-    public void run(String... strings) throws Exception {
-
-    }
 }

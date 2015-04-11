@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -17,23 +18,11 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource("classpath:/data-config.properties")
+@PropertySource("classpath:/org/kashpersky/scuttle/config/data/data-config.properties")
 public class HibernateConfiguration {
 
-    @Value("${jdbc.driverClassName}")
-    private String driverClassName;
-
-    @Value("${jdbc.url}")
-    private String url;
-
-    @Value("${jdbc.user}")
-    private String user;
-
-    @Value("${jdbc.pass}")
-    private String pass;
-
-    @Value("${hibernate.dialect}")
-    private String dialect;
+    @Autowired
+    Environment env;
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
@@ -48,10 +37,10 @@ public class HibernateConfiguration {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(driverClassName);
-        dataSource.setUrl(url);
-        dataSource.setUsername(user);
-        dataSource.setPassword(pass);
+        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+        dataSource.setUrl(env.getProperty("jdbc.url"));
+        dataSource.setUsername(env.getProperty("jdbc.user"));
+        dataSource.setPassword(env.getProperty("jdbc.pass"));
 
         return dataSource;
     }
@@ -73,7 +62,7 @@ public class HibernateConfiguration {
     private Properties hibernateProperties() {
         return new Properties() {
             {
-                setProperty("hibernate.dialect", dialect);
+                setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
             }
         };
     }
