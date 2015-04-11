@@ -7,6 +7,5 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @Configuration
 @ComponentScan
-//@EnableMongoRepositories
 public class ScuttleCrabConfig {
 }

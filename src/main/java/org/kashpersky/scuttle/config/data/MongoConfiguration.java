@@ -8,7 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
 @Configuration
-@PropertySource("classpath:/app-config.properties")
+//@EnableMongoRepositories
+@PropertySource("classpath:/data-config.properties")
 public class MongoConfiguration extends AbstractMongoConfiguration {
 
     @Value("${mongo.db.name}")
