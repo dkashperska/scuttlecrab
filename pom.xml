@@ -76,6 +76,13 @@
             <version>LATEST</version>
         </dependency>
 
+        <!-- Google Guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
         <!-- Logging and Testing -->
         <dependency>
             <groupId>org.slf4j</groupId>

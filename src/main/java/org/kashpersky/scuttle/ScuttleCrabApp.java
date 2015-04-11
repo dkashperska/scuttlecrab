@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.kashpersky.scuttle.config.ScuttleCrabConfig;
 import org.kashpersky.scuttle.config.data.HibernateConfiguration;
 import org.kashpersky.scuttle.config.data.MongoConfiguration;
+import org.kashpersky.scuttle.domain.hibernate.Champion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
