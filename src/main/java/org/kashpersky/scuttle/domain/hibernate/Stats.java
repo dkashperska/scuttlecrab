@@ -13,7 +13,7 @@ public class Stats {
     private Integer id;
     
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "championId")
+    @JoinColumn(name = "champion")
     private Champion champion;
 
     @Column(name = "attackrange")
